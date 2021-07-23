@@ -19,7 +19,7 @@
     *NOTE: this folder must be placed outside the project folder.*
 
 5. **IMPORTANT**: in order to allow Gson to properly parse ```java.time.LocalDateTime``` objects, the JVM must be run with the following flag: ```--add-opens=java.base/java.time=ALL-UNNAMED```.
-To do so (in eclipse):
+To do so (in Eclipse):
     - Right click on the project: ```Run As > Run Configurations...```
     - In the left panel select your ```Tomcat Server on Localhost```
     - Click on the ```Arguments``` tab
