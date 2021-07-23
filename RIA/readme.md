@@ -1,4 +1,4 @@
-<img src="TIW/logos/ebuy_plus.svg" width="20%"/>
+<img src="https://github.com/mattiacalabresi/tiw/blob/master/logos/ebuy_plus.svg" width="20%"/>
 <br><br>
 
 # RIA
