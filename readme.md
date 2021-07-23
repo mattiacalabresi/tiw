@@ -14,4 +14,4 @@
 <img src="logos/ebuy_plus.svg" width="25%"/>
 
 * Documentation [here](RIA/Documentation)
-* Source code [here](Ria)
+* Source code [here](RIA)
