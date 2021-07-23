@@ -1,0 +1,169 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="564" height="252">
+    <g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <path fill="none" stroke="#000000" d="M 16 8 L 560 8 L 560 240 L 16 240 L 16 8" stroke-miterlimit="10" />
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <path fill="#ffffd8" stroke="none" d="M 16 8 L 16 30 L 116.5380859375 30 L 127.5380859375 19 L 127.5380859375 8 L 16 8" />
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <path fill="none" stroke="#000000" d="M 16 8 L 16 30 L 116.5380859375 30 L 127.5380859375 19 L 127.5380859375 8 L 16 8 L 16 8" stroke-miterlimit="10" />
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <g>
+                <path fill="none" stroke="none" />
+                <text fill="#000000" stroke="none" font-family="Arial" font-size="13px" font-style="normal" font-weight="normal" text-decoration="none" x="40.72998046875" y="25.5">Show Home</text>
+            </g>
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <g>
+                <path fill="none" stroke="none" />
+                <text fill="#000000" stroke="none" font-family="Arial" font-size="13px" font-style="normal" font-weight="bold" text-decoration="none" x="21" y="25.5">sd</text>
+            </g>
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <rect fill="#C0C0C0" stroke="none" x="247" y="47" width="140.37353515625" height="39" opacity="0.2" />
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <rect fill="#ffd8d8" stroke="none" x="240" y="40" width="140.37353515625" height="39" />
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <path fill="none" stroke="#700000" d="M 240 40 L 380.37353515625 40 L 380.37353515625 79 L 240 79 L 240 40 Z Z" stroke-miterlimit="10" />
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <g>
+                <path fill="none" stroke="none" />
+                <text fill="#700000" stroke="none" font-family="Arial" font-size="13px" font-style="normal" font-weight="bold" text-decoration="none" x="256.358642578125" y="59.5">ShowHomeServlet</text>
+            </g>
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <path fill="none" stroke="#000000" d="M 311.5 80 L 311.5 239" stroke-miterlimit="10" stroke-dasharray="3" />
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <path fill="#000000" stroke="none" d="M 160 143.5 C 160 139.6340064 163.1340064 136.5 167 136.5 C 170.8659936 136.5 174 139.6340064 174 143.5 C 174 147.3659936 170.8659936 150.5 167 150.5 C 163.1340064 150.5 160 147.3659936 160 143.5 Z" />
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <path fill="#ffffd8" stroke="none" d="M 32 80 L 109.3671875 80 L 119.3671875 90 L 119.3671875 223 L 32 223 L 32 80" />
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <path fill="none" stroke="#664c00" d="M 32 80 L 109.3671875 80 L 119.3671875 90 L 119.3671875 223 L 32 223 L 32 80 L 32 80" stroke-miterlimit="10" />
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <path fill="none" stroke="#664c00" d="M 109.3671875 80 L 109.3671875 90 L 119.3671875 90 L 109.3671875 80" stroke-miterlimit="10" />
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <g>
+                <path fill="none" stroke="none" />
+                <text fill="#000000" stroke="none" font-family="Arial" font-size="13px" font-style="normal" font-weight="normal" text-decoration="none" x="37" y="98">GET:</text>
+            </g>
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <g>
+                <path fill="none" stroke="none" />
+                <text fill="#000000" stroke="none" font-family="Arial" font-size="13px" font-style="normal" font-weight="normal" text-decoration="none" x="37" y="113">/home</text>
+            </g>
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <g>
+                <path fill="none" stroke="none" />
+                <text fill="#000000" stroke="none" font-family="Arial" font-size="13px" font-style="normal" font-weight="normal" text-decoration="none" x="37" y="128"></text>
+            </g>
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <g>
+                <path fill="none" stroke="none" />
+                <text fill="#000000" stroke="none" font-family="Arial" font-size="13px" font-style="normal" font-weight="normal" text-decoration="none" x="37" y="143">FROM:</text>
+            </g>
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <g>
+                <path fill="none" stroke="none" />
+                <text fill="#000000" stroke="none" font-family="Arial" font-size="13px" font-style="normal" font-weight="normal" text-decoration="none" x="37" y="158">login.html</text>
+            </g>
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <g>
+                <path fill="none" stroke="none" />
+                <text fill="#000000" stroke="none" font-family="Arial" font-size="13px" font-style="normal" font-weight="normal" text-decoration="none" x="37" y="173">buy.html</text>
+            </g>
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <g>
+                <path fill="none" stroke="none" />
+                <text fill="#000000" stroke="none" font-family="Arial" font-size="13px" font-style="normal" font-weight="normal" text-decoration="none" x="37" y="188">sell.html</text>
+            </g>
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <g>
+                <path fill="none" stroke="none" />
+                <text fill="#000000" stroke="none" font-family="Arial" font-size="13px" font-style="normal" font-weight="normal" text-decoration="none" x="37" y="203">details.html</text>
+            </g>
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <g>
+                <path fill="none" stroke="none" />
+                <text fill="#000000" stroke="none" font-family="Arial" font-size="13px" font-style="normal" font-weight="normal" text-decoration="none" x="37" y="218">offers.html</text>
+            </g>
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <rect fill="#C0C0C0" stroke="none" x="431" y="47" width="118.4423828125" height="39" opacity="0.2" />
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <rect fill="#d8f2ff" stroke="none" x="424" y="40" width="118.4423828125" height="39" />
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <path fill="none" stroke="#003d5b" d="M 424 40 L 542.4423828125 40 L 542.4423828125 79 L 424 79 L 424 40 Z Z" stroke-miterlimit="10" />
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <g>
+                <path fill="none" stroke="none" />
+                <text fill="#003d5b" stroke="none" font-family="Arial" font-size="13px" font-style="normal" font-weight="bold" text-decoration="none" x="436.607177734375" y="59.5">TemplateEngine</text>
+            </g>
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <path fill="none" stroke="#000000" d="M 484.5 80 L 484.5 239" stroke-miterlimit="10" stroke-dasharray="3" />
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <path fill="none" stroke="#000000" d="M 174 144 L 304 144" stroke-miterlimit="10" />
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <path fill="#000000" stroke="none" d="M 293.83732514237585 148.209517756016 L 304 144 L 293.83732514237585 139.790482243984" />
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <path fill="none" stroke="#000000" d="M 293.83732514237585 148.209517756016 L 304 144 L 293.83732514237585 139.790482243984 L 293.83732514237585 148.209517756016" stroke-miterlimit="10" />
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <g>
+                <path fill="none" stroke="none" />
+                <text fill="#000000" stroke="none" font-family="Arial" font-size="13px" font-style="normal" font-weight="normal" text-decoration="none" x="217.8154296875" y="140.5">redirect</text>
+            </g>
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <rect fill="#ffd8d8" stroke="none" x="304" y="144" width="13" height="28" />
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <path fill="none" stroke="#700000" d="M 304 144 L 317 144 L 317 172 L 304 172 L 304 144 Z Z" stroke-miterlimit="10" />
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <path fill="none" stroke="#000000" d="M 317 163 L 477 163" stroke-miterlimit="10" />
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <path fill="#000000" stroke="none" d="M 466.83732514237585 167.209517756016 L 477 163 L 466.83732514237585 158.790482243984" />
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <path fill="none" stroke="#000000" d="M 466.83732514237585 167.209517756016 L 477 163 L 466.83732514237585 158.790482243984 L 466.83732514237585 167.209517756016" stroke-miterlimit="10" />
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <g>
+                <path fill="none" stroke="none" />
+                <text fill="#000000" stroke="none" font-family="Arial" font-size="13px" font-style="normal" font-weight="normal" text-decoration="none" x="334.5" y="159.5">process("home.html")</text>
+            </g>
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <rect fill="#d8f2ff" stroke="none" x="477" y="163" width="13" height="28" />
+        </g>
+        <g transform="translate(-6,2) scale(1,1)">
+            <path fill="none" stroke="#003d5b" d="M 477 163 L 490 163 L 490 191 L 477 191 L 477 163 Z Z" stroke-miterlimit="10" />
+        </g>
+    </g>
+</svg>

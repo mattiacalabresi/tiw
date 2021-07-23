@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+	<title>Ebuy - Offers</title>
+	<link rel="icon" th:href="@{/data/icons/icon.png}"  type="image/x-icon">
+</head>
+
+<body>
+	<nav class="navbar fixed-top navbar-expand navbar-light bg-light">
+		<div class="container-fluid ms-3">
+			<img th:src="@{/data/icons/logo.svg}"  alt="Ebuy">
+
+			<div class="collapse navbar-collapse ms-3">
+				<ul class="navbar-nav me-auto">
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="page" href="#" th:href="@{/home}">Home</a>
+					</li>
+				</ul>
+				<a class="btn btn-outline-primary me-3" type="submit" href="#" th:href="@{/logout}">Logout</a>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container mt-3">
+		&ThinSpace;
+	</div>
+
+	<div class="container-fluid mx-0 mt-5 mb-4">
+		<div class="row align-items-center">
+			<div class="col-3 fs-3">
+				<button type="button" class="btn" th:onclick="|window.location.href='@{/buy}'|">
+					<svg class="bi bi-chevron-left align-top" width="24" height="24" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+					</svg>
+				</button>
+				Offers
+			</div>
+			<div th:if="${successMessage} or ${errorMessage}" class="col-6">
+				<div class="alert alert-dismissible fade show my-0" role="alert" th:classappend="${successMessage} ? alert-success : alert-danger">
+					<div th:text="${successMessage} ?: ${errorMessage}">This is a test message. It will either be an error or a success.</div>
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+			</div>
+		</div>
+		<div class="col-3"></div>
+	</div>
+
+	<div class="container mt-5">
+		<div class="row">
+			<div class="col">
+				<div class="card text-dark bg-light pt-2">
+					<img th:src="@{'/get-image/' + ${item.imageName}}" style="height: auto; width: 150px;" class="card-img-top mx-auto">
+					<div class="card-body">
+						<h5 th:if="${imageErrorMessage}" class="text-danger text-center" th:text="${imageErrorMessage}"> This is a test image error.</h5>
+						<p class="card-text"><small th:text="${item.code}" class="text-muted">123abc</small></p>
+						<h5 class="card-title" th:text="${item.name}">Phone</h5>
+						<p class="card-text" th:text="${item.description}">A very nice phone.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+			</div>
+			<div class="col">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title mb-4">Auction info</h5>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item">Base price: <strong><span th:text="${#numbers.formatDecimal(auctionDetails.basePrice, 1, 'DEFAULT', 2, 'DEFAULT')}">182.99</span> &euro;</strong></li>
+							<li class="list-group-item">Minimum rise: <strong><span th:text="${#numbers.formatDecimal(auctionDetails.minimumRise, 1, 'DEFAULT', 2, 'DEFAULT')}">10.00</span> &euro;</strong></li>
+							<li class="list-group-item">Expire date & time: <strong><span th:text="${auctionDetails.expireDateTimeFormatted}">2021-07-16 15:12</span></strong></li>
+						</ul>
+					</div>
+					<div class="card-footer text-center text-white bg-success">
+						<strong><span th:text="(not ${auctionDetails.closed} and not ${auctionDetails.expired}) ? 'OPEN' : 'ERROR'">STATUS</span></strong>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container my-5">
+			<div class="row">
+				<div class="col-lg pe-4 pt-2">
+					<div class="fs-4 mb-3">Offers</div>
+					<table th:if="${offers and #lists.size(offers) > 0}" class="table table-hover">
+						<thead>
+							<tr>
+								<th scope="col">User</th>
+								<th scope="col">Price</th>
+								<th scope="col">Date & Time</th>
+							</tr>
+						</thead>
+						<tbody th:remove="all-but-first">
+							<tr th:each="offer : ${offers}">
+								<th scope="row">
+									<span th:text="${offer.userName}">Mark</span>
+								</th>
+								<td>
+									<span th:text="${#numbers.formatDecimal(offer.price, 1, 'DEFAULT', 2, 'DEFAULT')}">210.00</span> &euro;
+								</td>
+								<td>
+									<span th:text="${offer.dateTimeFormatted}">2021-12-12 08:00</span>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">Mark</th>
+								<td>180.30 &euro;</td>
+								<td>2021-12-11 15:30</td>
+							</tr>
+							<tr>
+								<th scope="row">Anne</th>
+								<td>175.67 &euro;</td>
+								<td>2021-12-10 11:25</td>
+							</tr>
+						</tbody>
+					</table>
+					<div th:if="not ${offers} or ${#lists.size(offers) <= 0}">
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-square text-secondary" viewBox="0 0 16 16">
+							<path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+							<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+						</svg>
+						<span class="text-secondary ms-2">No offers for this auction</span>
+					</div>
+				</div>
+				<div class="col-2"></div>
+				<div class="col-lg-4 pe-4 pt-2 mb-5">
+					<form th:action="@{/place}" method="POST">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title mb-4">Make an offer</h5>
+								<div class="mb-3 input-group">
+									<input type="number" name="offered_price" th:min="${auctionDetails.minimumOffer}" step="0.01" th:placeholder="${#numbers.formatDecimal(auctionDetails.minimumOffer, 1, 'DEFAULT', 2, 'DEFAULT')}" placeholder="0.99" class="form-control" required>
+									<span class="input-group-text">&euro;</span>
+									<div id="offeredPriceHelp" class="form-text">IMPORTANT<br>you can't place two consecutive offers. If so, the last one will be rejected.</div>
+								</div>
+								<input type="hidden" name="auction_id" th:value="${auctionDetails.id}">
+								<div class="d-grid mx-auto">
+									<button type="submit" class="btn btn-primary">PLACE OFFER</button>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+</body>
+
+</html>

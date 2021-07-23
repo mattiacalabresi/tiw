@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script  th:src="@{/js/utils.js}" defer></script>
+
+    <title>Ebuy - Sell</title>
+    <link rel="icon" th:href="@{/data/icons/icon.png}" type="image/x-icon">
+</head>
+
+<body>
+    <nav class="navbar fixed-top navbar-expand navbar-light bg-light">
+        <div class="container-fluid ms-3">
+            <img th:src="@{/data/icons/logo.svg}"  alt="Ebuy">
+
+            <div class="collapse navbar-collapse ms-3">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#" th:href="@{/home}">Home</a>
+                    </li>
+                </ul>
+                <a class="btn btn-outline-primary me-3" type="submit" href="#" th:href="@{/logout}">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-3">
+        &ThinSpace;
+    </div>
+
+    <div class="container-fluid mx-0 mt-5 mb-4">
+        <div class="row align-items-center">
+            <div class="col-3 fs-3">
+                <button type="button" class="btn" th:onclick="|window.location.href='@{/home}'|">
+                    <svg class="bi bi-chevron-left align-top" width="24" height="24" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+                    </svg>
+                </button>
+                Your auctions
+            </div>
+            <div th:if="${validator}" class="col-6">
+                <div class="alert alert-dismissible fade show my-0" role="alert" th:classappend="${validator.successMessage} ? alert-success : alert-danger">
+                    <div th:text="${validator.successMessage} ?: 'ERROR: unable to create auction, check the form below for further details.'"> This is a test message, it will either be a success or an error.</div>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+        <div class="col-3"></div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+        	<div class="col-1"></div>
+            <div class="col-lg p-0">
+                <div class="fs-4 mb-3">Open</div>
+                <table th:if="${#lists.size(openAuctions) > 0}" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="text-nowrap" scope="col">#</th>
+                            <th class="text-nowrap" scope="col">Item</th>
+                            <th class="text-nowrap" scope="col">Maximum offer</th>
+                            <th class="text-nowrap" scope="col">Expires in</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody th:remove="all-but-first">
+                        <tr th:each="auction : ${openAuctions}" th:class="${auction.expired} ? table-warning">
+                            <th scope="row">
+                                <span th:text="${auction.itemCode}">1234</span>
+                            </th>
+                            <td>
+                                <span th:text="${auction.itemName}">Phone</span>
+                            </td>
+                            <td>
+                                <span th:text="${#numbers.formatDecimal(auction.maximumOffer, 1, 'DEFAULT', 2, 'DEFAULT')}">399,99</span> &euro;
+                            </td>
+                            <td>
+                                <div th:switch="${auction.expired}">
+                                    <div th:case="${false}"><span th:text="${auction.timeLeft.days}">0</span>d <span th:text="${auction.timeLeft.hours}">14</span>h</div>
+                                    <div th:case="${true}"><strong class="text-warning">EXPIRED</strong></div>
+                                </div>
+                            </td>
+                            <td>
+                                <a class="btn btn-sm" th:classappend="${auction.expired} ? btn-outline-warning : btn-outline-primary" th:href="@{/details(auction_id=${auction.id})}">DETAILS</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">65ert45j</th>
+                            <td>Notebook</td>
+                            <td>621,30 &euro;</td>
+                            <td>1d 2h</td>
+                            <td><a class="btn btn-outline-primary btn-sm" href="#">DETAILS</a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">fty78</th>
+                            <td>Chair</td>
+                            <td>66,33 &euro;</td>
+                            <td>14d 21h</td>
+                            <td><a class="btn btn-outline-primary btn-sm" href="#">DETAILS</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div th:if="${#lists.size(openAuctions) <= 0}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-square text-secondary" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                    </svg>
+                    <span class="text-secondary ms-2">No open auctions</span>
+                </div>
+            </div>
+            <div class="col-1"></div>
+            <div class="col-lg p-0">
+                <div class="fs-4 mb-3">Closed</div>
+                <table th:if="${#lists.size(closedAuctions) > 0}" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="text-nowrap" scope="col">#</th>
+                            <th class="text-nowrap" scope="col">Item</th>
+                            <th class="text-nowrap" scope="col">Final price</th>
+                            <th class="text-nowrap" scope="col">Expired for</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody th:remove="all-but-first">
+                        <tr th:each="auction : ${closedAuctions}">
+                            <th scope="row">
+                                <span th:text="${auction.itemCode}">1234</span>
+                            </th>
+                            <td>
+                                <span th:text="${auction.itemName}">Phone</span>
+                            </td>
+                            <td>
+                                <span th:text="${#numbers.formatDecimal(auction.maximumOffer, 1, 'DEFAULT', 2, 'DEFAULT')}">399,99</span> &euro;
+                            </td>
+                            <td>
+                                <span th:text="${auction.timeLeft.days}">0</span>d <span th:text="${auction.timeLeft.hours}">14</span>h
+                            </td>
+                            <td>
+                                <a class="btn btn-outline-primary btn-sm" th:href="@{/details(auction_id=${auction.id})}">DETAILS</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">65ert45j</th>
+                            <td>Notebook</td>
+                            <td>621,30 &euro;</td>
+                            <td>1d 2h</td>
+                            <td><a class="btn btn-outline-primary btn-sm" href="#">DETAILS</a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">fty78</th>
+                            <td>Chair</td>
+                            <td>66,33 &euro;</td>
+                            <td>14d 21h</td>
+                            <td><a class="btn btn-outline-primary btn-sm" href="#">DETAILS</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div th:if="${#lists.size(closedAuctions) <= 0}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-square text-secondary" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                    </svg>
+                    <span class="text-secondary ms-2">No closed auctions</span>
+                </div>
+            </div>
+            <div class="col-1"></div>
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        &ThinSpace;
+    </div>
+
+    <div class="container ms-5 mt-5 mb-5">
+        <div class="row">
+            <div class="col-6">
+                <form th:action="@{/create}" method="POST" enctype="multipart/form-data">
+                    <div class="card px-3 pt-3 pb-0 mb-0 border-2">
+                        <div class="card-head">
+                            <div class="card-title">
+                                <div class="fs-4 ms-3">New Auction</div>
+                            </div>
+                        </div>
+                        <div class="card-body mb-0">
+                            <div class="card p-3">
+                                <div class="card-head">
+                                    <div class="card-title">
+                                        <div class="fs-5">Item</div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <input type="text" name="code" maxlength="45" class="form-control" th:classappend="(not ${validator} or ${validator.successMessage}) ? needs-validation : (${validator.itemCode} ? is-valid : is-invalid)" th:value="(${validator} and not ${validator.successMessage} and ${validator.itemCode}) ? ${validator.itemCode}" placeholder="Code" required>
+                                            <div th:if="${validator} and ${validator.itemCodeError}" class="invalid-feedback"><span th:text="${validator.itemCodeError}">This is a test code error.</span></div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" name="name" maxlength="45" class="form-control" th:classappend="(not ${validator} or ${validator.successMessage}) ? needs-validation : (${validator.itemName} ? is-valid : is-invalid)" th:value="(${validator} and not ${validator.successMessage} and ${validator.itemName}) ? ${validator.itemName}" placeholder="Name" required>
+                                            <div th:if="${validator} and ${validator.itemNameError}" class="invalid-feedback"><span th:text="${validator.itemNameError}">This is a test name error.</span></div>
+                                        </div>
+                                        <div class="col-12">
+                                            <textarea name="description" maxlength="100" rows="3" class="form-control" th:classappend="(not ${validator} or ${validator.successMessage}) ? needs-validation : (${validator.itemDescription} ? is-valid : is-invalid)" th:text="(${validator} and not ${validator.successMessage} and ${validator.itemDescription}) ? ${validator.itemDescription}" placeholder="Description (max. 100 characters)" required></textarea>
+                                            <div th:if="${validator} and ${validator.itemDescriptionError}" class="invalid-feedback"><span th:text="${validator.itemDescriptionError}">This is a test description error.</span></div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="input-group">
+                                                <label class="input-group-btn">
+                                                    <span class="btn btn-outline-primary"> Upload image <input type="file" name="image" accept="image/*" style="display: none;" required>
+                                                    </span>
+                                                </label>
+                                                <input type="text" id="image-form" class="form-control" th:classappend="(${validator} and not ${validator.successMessage}) ? is-invalid : needs-validation" placeholder="Max. size 10MB" disabled>
+                                                <div th:if="${validator} and not ${validator.successMessage}" class="invalid-feedback"><span th:text="${validator.itemImageError} ?: 'Upload the image again, please'">This is a test image error.</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card px-4 mb-1 border-0">
+                                <div class="card-body">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="inputBasePrice" class="form-label">Base price</label>
+                                            <div class="input-group">
+                                                <input type="number" name="base_price" class="form-control" th:classappend="(not ${validator} or ${validator.successMessage}) ? needs-validation : (${validator.basePrice} != -1.0 ? is-valid : is-invalid)" min="0.01" step="0.01" th:value="(${validator} and not ${validator.successMessage} and ${validator.basePrice} != -1.0) ? ${validator.basePrice}" placeholder="0.01" required>
+                                                <span class="input-group-text">&euro;</span>
+                                                <div th:if="${validator} and ${validator.basePriceError}" class="invalid-feedback"><span th:text="${validator.basePriceError}">This is a test base price error.</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="inputMinimumRise" class="form-label">Minimum rise</label>
+                                            <div class="input-group">
+                                                <input type="number" name="minimum_rise" class="form-control" th:classappend="(not ${validator} or ${validator.successMessage}) ? needs-validation : (${validator.minimumRise} != -1 ? is-valid : is-invalid)" min="1" step="1" th:value="(${validator} and not ${validator.successMessage} and ${validator.minimumRise} != -1) ? ${validator.minimumRise}" placeholder="1" required>
+                                                <span class="input-group-text">.00 &euro;</span>
+                                                <div th:if="${validator} and ${validator.minimumRiseError}" class="invalid-feedback"><span th:text="${validator.minimumRiseError}">This is a test minimum rise error.</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label">Expire date & time</label>
+                                            <input type="datetime-local" name="expire_datetime" class="form-control" th:classappend="(not ${validator} or ${validator.successMessage}) ? needs-validation : (${validator.expireDateTime} ? is-valid : is-invalid)" th:min="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd')} + 'T' + ${#calendars.format(#calendars.createNow(), 'HH:mm')}" th:value="(${validator} and not ${validator.successMessage} and ${validator.expireDateTime}) ? ${validator.expireDateTime} : (${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd')} + 'T' + ${#calendars.format(#calendars.createNow(), 'HH:mm')})" required>
+                                            <div th:if="${validator} and ${validator.expireDateTimeError}" class="invalid-feedback"><span th:text="${validator.expireDateTimeError}">This is a test expire date and time error.</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 mb-0">
+                                <input type="submit" value="&ThickSpace;Create&ThickSpace;" class="btn btn-primary">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col"></div>
+            <div class="col"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+</body>
+
+</html>

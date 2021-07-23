@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+    <title>Ebuy - Sell</title>
+    <link rel="icon" th:href="@{/data/icons/icon.png}" type="image/x-icon">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand navbar-light bg-light">
+        <div class="container-fluid ms-3">
+            <img th:src="@{/data/icons/logo.svg}" alt="Ebuy">
+
+            <div class="collapse navbar-collapse ms-3">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#" th:href="@{/home}">Home</a>
+                    </li>
+                </ul>
+                <a class="btn btn-outline-primary me-3" type="submit" href="#" th:href="@{/logout}">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <h2 class="ms-4 mt-3" th:text="${'Welcome back, ' + session.username}">Welcome back, TEST</h2>
+
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-1"></div>
+            <div class="col">
+                <div class="card">
+                    <img class="card-img-top mt-3" th:src="@{/data/icons/buy.svg}" width="50" height="50" alt="Buy">
+                    <div class="card-body mt-3">
+                        <h5 class="card-title text-center">Buy</h5>
+                        <p class="card-text mt-4">Looking for something 'new'?<br>Choose from a wide selection of products the one that best suits your needs.</p>
+                        <a href="#" class="btn btn-primary" th:href="@{/buy}">Buy now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col"></div>
+            <div class="col">
+                <div class="card">
+                    <img class="card-img-top mt-3" th:src="@{/data/icons/sell.svg}"  width="50" height="50" alt="Sell">
+                    <div class="card-body mt-3">
+                        <h5 class="card-title text-center">Sell</h5>
+                        <p class="card-text mt-4">Get rid of items you don't use anymore and earn money in the process.<br>It's easy with eBuy!</p>
+                        <a href="#" class="btn btn-primary" th:href="@{/sell}">Sell now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-1"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+</body>
+
+</html>

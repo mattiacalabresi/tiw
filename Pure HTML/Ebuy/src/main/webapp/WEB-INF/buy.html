@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+    <title>Ebuy - Buy</title>
+    <link rel="icon" th:href="@{/data/icons/icon.png}" type="image/x-icon">
+</head>
+
+<body>
+    <nav class="navbar fixed-top navbar-expand navbar-light bg-light">
+        <div class="container-fluid ms-3">
+            <img th:src="@{/data/icons/logo.svg}" alt="Ebuy">
+
+            <div class="collapse navbar-collapse ms-3">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#" th:href="@{/home}">Home</a>
+                    </li>
+                </ul>
+                <a class="btn btn-outline-primary me-3" type="submit" href="#" th:href="@{/logout}">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-3">
+        &ThinSpace;
+    </div>
+
+    <div class="container-fluid mx-0 mt-5 mb-4">
+        <div class="row align-items-center">
+            <div class="col-3 fs-3">
+                <button type="button" class="btn" th:onclick="|window.location.href='@{/home}'|">
+                    <svg class="bi bi-chevron-left align-top" width="24" height="24" viewBox="0 0 16 16"
+                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+                    </svg>
+                </button>
+                Buy
+            </div>
+            <div class="col-6">
+                <form th:action="@{/search}" method="GET">
+                    <div class="input-group">
+                        <input type="search" name="search_query" class="form-control rounded"
+                            placeholder="Search items by name or description..." required />
+                        <button type="submit" class="btn btn-primary">
+                            &ThickSpace;
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                            </svg>
+                            &ThickSpace;
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-3"></div>
+    </div>
+
+    <div class="container mt-5 mb-5">
+        <div th:if="${searchedAuctions}" class="row">
+            <div class="col">
+                <div class="fs-4 mt-5 mb-2">Results</div>
+                <table th:if="${#lists.size(searchedAuctions) > 0}" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Item</th>
+                            <th scope="col">Maximum offer</th>
+                            <th scope="col">Time left</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody th:remove="all-but-first">
+                        <tr th:each="auction : ${searchedAuctions}">
+                            <th scope="row">
+                                <span th:text="${auction.itemCode}">1234</span>
+                            </th>
+                            <td>
+                                <span th:text="${auction.itemName}">Phone</span>
+                            </td>
+                            <td>
+                                <span th:text="${#numbers.formatDecimal(auction.maximumOffer, 1, 'DEFAULT', 2, 'DEFAULT')}">399,99</span> &euro;
+                            </td>
+                            <td>
+                                <span th:text="${auction.timeLeft.days}">0</span>d <span th:text="${auction.timeLeft.hours}">14</span>h
+                            </td>
+                            <td>
+                                <a class="btn btn-outline-primary btn-sm" href="#" th:href="@{/offers(auction_id=${auction.id})}">OFFERS</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">65ert45j</th>
+                            <td>Notebook</td>
+                            <td>621,30 &euro;</td>
+                            <td>1d 2h</td>
+                            <td> <a class="btn btn-outline-primary btn-sm" href="#">OFFERS</a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">fty78</th>
+                            <td>Chair</td>
+                            <td>66,33 &euro;</td>
+                            <td>14d 21h</td>
+                            <td> <a class="btn btn-outline-primary btn-sm" href="#">OFFERS</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div th:if="${#lists.size(searchedAuctions) <= 0}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-square text-secondary" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                    </svg>
+                    <span class="text-secondary ms-2">No items found</span>
+                </div>
+            </div>
+            <div class="col-5"></div>
+        </div>
+        <div class="row mt-5">
+            <div class="col">
+                <div class="fs-4 mt-5 mb-2">Won Auctions</div>
+                <table th:if="${#lists.size(wonAuctions) > 0}" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Item</th>
+                            <th scope="col">Final price</th>
+                        </tr>
+                    </thead>
+                    <tbody th:remove="all-but-first">
+                        <tr th:each="auction : ${wonAuctions}">
+                            <th scope="row">
+                                <span th:text="${auction.itemCode}">456</span>
+                            </th>
+                            <td>
+                                <span th:text="${auction.itemName}">Watch</span>
+                            </td>
+                            <td>
+                                <span th:text="${#numbers.formatDecimal(auction.maximumOffer, 1, 'DEFAULT', 2, 'DEFAULT')}">68,99</span> &euro;
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">4567uc</th>
+                            <td>Notebook</td>
+                            <td>621,30 &euro;</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">4567846756879</th>
+                            <td>Chair</td>
+                            <td>66,33&euro;</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div th:if="${#lists.size(wonAuctions) <= 0}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-square text-secondary" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                    </svg>
+                    <span class="text-secondary ms-2">No won auctions</span>
+                </div>
+            </div>
+            <div class="col-5"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+</body>
+
+</html>
