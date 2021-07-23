@@ -1,4 +1,4 @@
-<img src="TIW/logos/ebuy.svg" width="20%"/>
+<img src="https://github.com/mattiacalabresi/tiw/blob/master/logos/ebuy.svg" width="20%"/>
 <br><br>
 
 # Pure HTML
